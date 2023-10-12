@@ -1,25 +1,26 @@
-import { Component } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-// Importar storage
-import { Storage} from '@ionic/storage-angular'
 
-@Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
+//1. importar Storage:
+import { Storage } from '@ionic/storage-angular';
+
+@Injectable({
+  providedIn: 'root'
 })
-export class AppComponent {
+export class UsuarioStorageService {
 
-  // Variables auxiliares
   usuarios: any[] = [];
   estado_login: boolean = false;
 
-  constructor(private storage : Storage,
+  constructor(private storage: Storage,
               private router : Router) {
-                storage.create();
-              }
 
-  // METODOS DE USUARIO
+                storage.create()
+               }
+
+  // METODOS
+  
+  //buscar: que buscar y donde buscarlo.
   async buscar(rut: string, key: string): Promise<any>{
     this.usuarios = await this.storage.get(key) || [];
     return this.usuarios.find(usuario => usuario.rut == rut);
