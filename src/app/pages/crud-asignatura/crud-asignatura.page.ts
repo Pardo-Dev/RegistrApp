@@ -19,7 +19,8 @@ export class CrudAsignaturaPage implements OnInit {
   constructor(private asignaturaService : AsignaturaService,
               private toastController : ToastController) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.listar();
   }
   asignatura = new FormGroup({
     codigo : new FormControl('', [Validators.required]),
@@ -27,7 +28,13 @@ export class CrudAsignaturaPage implements OnInit {
     rut_docente : new FormControl('', [Validators.required])
   })
 
+  asignaturas : any[] = [];
+
   // Metodos
+  async listar(){
+    this.asignaturas = await this.asignaturaService.listar(this.KEY);
+  }
+
   async guardar(){
     let resp : boolean = await this.asignaturaService.agregar(this.asignatura.value, this.KEY);
     if(resp){
@@ -36,6 +43,28 @@ export class CrudAsignaturaPage implements OnInit {
       this.alerta('bottom', 'ASIGNATURA NO REGISTRADA!', 3000, 'danger');
     }
   }
+
+  async eliminar(codigoEliminar: string){
+    await this.asignaturaService.eliminar(codigoEliminar, this.KEY);
+    await this.listar();
+    alert("Asignatura eliminada!");
+  }
+
+  async buscar(codigoBuscar: string){
+    var asignaturaEncontrado: any = await this.asignaturaService.buscar(codigoBuscar, this.KEY);
+    this.asignatura.setValue(asignaturaEncontrado);
+  }
+
+  async modificar(){
+    var resp: boolean = await this.asignaturaService.modificar(this.asignatura.value, this.KEY);
+    if(resp){
+      alert("ASIGNATURA modificado!");
+      await this.listar();
+    }else{
+      alert("ASIGNATURA NO EXISTE!");
+    }
+  }
+
 
 
   // Metodo para la tostada

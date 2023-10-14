@@ -35,7 +35,7 @@ export class CrudUsuarioPage implements OnInit {
 
       correo  : new FormControl('', [
                                     Validators.required,
-                                    Validators.pattern('[a-zA-Z]+@+(duocuc.cl)')
+                                    Validators.pattern('[a-zA-Z.]+@+(duocuc.cl)')
                                   ]),
       
       tipo_usuario : new FormControl('alumno', [Validators.required]),
