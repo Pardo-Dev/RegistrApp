@@ -10,15 +10,18 @@ import { UsuarioStorageService } from 'src/app/services/usuario-storage.service'
 export class LoginPage implements OnInit {
 
   correo : string = "";
-  clave : string = "";
+  clave_1 : string = "";
 
   admin: any = {
     rut: '21336770-6',
-    nombre: 'Lucas Antil',
+    nombre: 'Lucas',
+    ap_paterno : 'Antil',
+    ap_materno : 'Gaete',
     correo: 'lu.antil@duocuc.cl',
     fecha_nacimiento: '2003-12-03',
     tipo_usuario: 'administrador',
-    clave: 'CharizardX'
+    clave_1: 'CharizardX',
+    clave_2: 'CharizardX'
   }
 
   constructor(private usuarioStorage : UsuarioStorageService,
@@ -30,7 +33,7 @@ export class LoginPage implements OnInit {
 
   //Método para loguear:
   async ingresar(){
-    var usuario_encontrado: any = await this.usuarioStorage.login(this.correo, this.clave, 'usuarios');
+    var usuario_encontrado: any = await this.usuarioStorage.login(this.correo, this.clave_1, 'usuarios');
     if(usuario_encontrado != undefined){
       //ELEMENTO NUEVO PARA EL LOGIN:
       var navigationExtras: NavigationExtras = {

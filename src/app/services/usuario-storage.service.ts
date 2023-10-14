@@ -73,7 +73,7 @@ export class UsuarioStorageService {
   //método para loguear:
   async login(correo: string, clave: string, key: string): Promise<any>{
     this.usuarios = await this.storage.get(key) || [];
-    var usuarito: any = this.usuarios.find(usu => usu.correo == correo && usu.clave == clave);
+    var usuarito: any = this.usuarios.find(usu => usu.correo == correo && usu.clave_1 == clave);
     if(usuarito != undefined){
       this.estado_login = true;
       return usuarito;
