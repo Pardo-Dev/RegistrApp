@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { UsuarioStorageService } from 'src/app/services/usuario-storage.service';
+import { validateRut } from '@fdograph/rut-utilities';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-register',
@@ -69,14 +71,35 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  // Metodos de formulario
+  // Metodos de formulario  
   async guardar(){
-    var resp:boolean = await this.usuarioStorage.agregar(this.usuario.value, this.KEY);
-    if(resp){
-      this.alerta('bottom', 'USUARIO REGISTRADO!', 3000, 'success')
-      this.router.navigate(['/login'])
-    }else{
-      this.alerta('bottom', 'USUARION NO REGISTRADO!', 3000, 'danger')
+    let fechastring = this.usuario.value.fecha_nacimiento||"";
+    let fechaOk = moment(fechastring, "YYYY-MM-DD").toDate();
+    if(this.usuarioStorage.validarEdad(fechaOk)){
+      if(validateRut(this.usuario.value.rut||"")){
+        var resp:boolean = await this.usuarioStorage.agregar(this.usuario.value, this.KEY);
+        if(resp){
+          this.alerta('bottom', 'USUARIO REGISTRADO!', 3000, 'success')
+          this.router.navigate(['/login'])
+        }else{
+          this.alerta('bottom', 'USUARION NO REGISTRADO!', 3000, 'danger')
+        }
+      
+      } else{
+        this.alerta('bottom', 'RUT NO VALIDO!', 3000, 'warning')
+      }
+    } else {
+      this.alerta('bottom', 'EDAD NO VALIDA, INTENTE DE NUEVO!', 3000, 'warning')
+    }
+  }
+  
+  public iqualPassword(){
+    var pass1 = this.usuario.value.clave_1||"";
+    var pass2 = this.usuario.value.clave_2||"";
+    if(pass1 !== pass2){
+      this.alerta('bottom',"LAS CONTRASEÑAS NO COINCIDEN", 3000, 'danger');
+    } else{
+      this.guardar();
     }
   }
 

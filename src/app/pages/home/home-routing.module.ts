@@ -15,6 +15,14 @@ const routes: Routes = [
         path: 'crud-asignatura',
         loadChildren: () => import('../crud-asignatura/crud-asignatura.module').then( m => m.CrudAsignaturaPageModule)
       },
+      {
+        path: 'alumno',
+        loadChildren: () => import('../alumno/alumno.module').then( m => m.AlumnoPageModule)
+      },
+      {
+        path: 'docente',
+        loadChildren: () => import('../docente/docente.module').then( m => m.DocentePageModule)
+      },
     ]
   }
 ];

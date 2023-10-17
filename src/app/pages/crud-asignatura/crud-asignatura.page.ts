@@ -36,7 +36,7 @@ export class CrudAsignaturaPage implements OnInit {
   }
 
   async guardar(){
-    let resp : boolean = await this.asignaturaService.agregar(this.asignatura.value, this.KEY);
+    let resp : boolean = await this.asignaturaService.agregar(this.asignatura.value, this.asignatura.value.codigo||"", this.KEY);
     if(resp){
       this.alerta('bottom', 'ASIGNATURA REGISTRADA!', 3000, 'success');
     } else {

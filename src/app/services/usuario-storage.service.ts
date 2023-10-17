@@ -89,4 +89,15 @@ export class UsuarioStorageService {
   getEstadoLogin(): boolean{
     return this.estado_login;
   }
+
+  validarEdad(fechaNac: Date): boolean{
+    let dateMin: Date = new Date("1958-12-31");
+    let dateMax: Date = new Date("2006-12-31");
+    if(fechaNac.getFullYear() >= dateMin.getFullYear() && fechaNac.getFullYear() <= dateMax.getFullYear()){
+      return true;
+    }else{
+      return false;
+    }
+
+  }
 }

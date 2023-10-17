@@ -11,7 +11,7 @@
       <ion-card-title>Create your account</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <form [formGroup]="usuario" (ngSubmit)="guardar()">
+      <form [formGroup]="usuario" (ngSubmit)="iqualPassword()">
         <ion-item>
           <ion-input formControlName="rut" label="Rut" labelPlacement="stacked" placeholder="Ingrese rut" type="text"></ion-input>
         </ion-item>

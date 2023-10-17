@@ -21,9 +21,9 @@ export class AsignaturaService {
     return this.asignaturas.find(asignatura => asignatura.codigo == codigo);
   }
 
-  async agregar(asignatura: any, key: string): Promise<boolean>{
+  async agregar(asignatura: any,codigo:string , key: string): Promise<boolean>{
     this.asignaturas = await this.storage.get(key) || "";
-    let asignatura_encontrada = await this.buscar(asignatura, key)
+    let asignatura_encontrada = await this.buscar(codigo, key)
     if(asignatura_encontrada == undefined){
       this.asignaturas.push(asignatura);
       await this.storage.set(key, this.asignaturas);
