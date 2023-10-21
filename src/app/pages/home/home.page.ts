@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { UsuarioStorageService } from 'src/app/services/usuario-storage.service';
 
 @Component({
@@ -20,6 +21,8 @@ export class HomePage {
     this.usuario = this.router.getCurrentNavigation()?.extras.state;
     //sobrescribo el usuario con la propiedad .user del usuario que viaja con navigationExtras
     this.usuario = this.usuario.user;
+    
+
   }
 
   logout(){

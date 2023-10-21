@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AsignaturaService } from 'src/app/services/asignatura.service';
+import { AsistenciaStorageService } from 'src/app/services/asistencia-storage.service';
 
 @Component({
   selector: 'app-docente',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocentePage implements OnInit {
 
-  constructor() { }
+  KEY : string = "asignaturas"
+  asignaturas: any[] = [];
 
-  ngOnInit() {
+  constructor(private asignaturaService : AsignaturaService,
+              private asistenciaStorage : AsistenciaStorageService) { }
+
+  async ngOnInit() {
+    await this.listar();
   }
 
+
+  async listar(){
+    this.asignaturas = await this.asignaturaService.listar(this.KEY);
+  }
 }

@@ -26,6 +26,12 @@ export class UsuarioStorageService {
     return this.usuarios.find(usuario => usuario.rut == rut);
   }
 
+  // Buscar por correo
+  async buscarCorreo(correo: string, key: string): Promise<any>{
+    this.usuarios = await this.storage.get(key)||[];
+    return this.usuarios.find(usuario => usuario.correo == correo)
+  }
+
   //agregar: que agregar y donde agregarlo.
   async agregar(usuario: any, key: string): Promise<boolean>{
     this.usuarios = await this.storage.get(key) || [];

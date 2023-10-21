@@ -24,12 +24,31 @@ export class LoginPage implements OnInit {
     clave_2: 'CharizardX'
   }
 
+  docente: any = {
+    rut: '12123123-5',
+    nombre: 'matias',
+    ap_paterno : 'Antil',
+    ap_materno : 'Gaete',
+    correo: 'matias@duocuc.cl',
+    fecha_nacimiento: '2003-12-03',
+    tipo_usuario: 'docente',
+    clave_1: 'CharizardX',
+    clave_2: 'CharizardX'
+  }
+  
+
   constructor(private usuarioStorage : UsuarioStorageService,
               private router : Router) { }
 
+
+  fecha:Date = new Date();
+
   async ngOnInit() {
     await this.usuarioStorage.agregar(this.admin, 'usuarios');
+    await this.usuarioStorage.agregar(this.docente, 'usuarios');
+    alert(this.fecha.toLocaleDateString())
   }
+
 
   //Método para loguear:
   async ingresar(){
@@ -41,7 +60,14 @@ export class LoginPage implements OnInit {
           user: usuario_encontrado
         }
       };
-      this.router.navigate(['/home'], navigationExtras);
+      if(usuario_encontrado.tipo_usuario == "administrador"){
+        this.router.navigate(['/home/crud-usuario'], navigationExtras);
+      } else if(usuario_encontrado.tipo_usuario == "docente"){
+        this.router.navigate(['/home/docente'], navigationExtras);
+      } else if(usuario_encontrado.tipo_usuario == "alumno"){
+        this.router.navigate(['/home/alumno'], navigationExtras);
+      }
+
     }else{
       alert("USUARIO O CLAVE NO EXISTE!");
     }

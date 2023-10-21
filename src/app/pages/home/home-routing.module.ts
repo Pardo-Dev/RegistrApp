@@ -23,6 +23,14 @@ const routes: Routes = [
         path: 'docente',
         loadChildren: () => import('../docente/docente.module').then( m => m.DocentePageModule)
       },
+      {
+        path: 'qr-code',
+        loadChildren: () => import('../qr-code/qr-code.module').then( m => m.QrCodePageModule)
+      },
+      {
+        path: 'asistencia',
+        loadChildren: () => import('../asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
+      },
     ]
   }
 ];
