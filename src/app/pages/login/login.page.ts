@@ -61,11 +61,11 @@ export class LoginPage implements OnInit {
         }
       };
       if(usuario_encontrado.tipo_usuario == "administrador"){
-        this.router.navigate(['/home/crud-usuario'], navigationExtras);
+        this.router.navigate(['/home/perfil'], navigationExtras);
       } else if(usuario_encontrado.tipo_usuario == "docente"){
-        this.router.navigate(['/home/docente'], navigationExtras);
+        this.router.navigate(['/home/perfil'], navigationExtras);
       } else if(usuario_encontrado.tipo_usuario == "alumno"){
-        this.router.navigate(['/home/alumno'], navigationExtras);
+        this.router.navigate(['/home/perfil'], navigationExtras);
       }
 
     }else{
