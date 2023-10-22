@@ -1,11 +1,5 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-    <ion-button slot="end" color="warning" [routerLink]="['/register']">Registrarse</ion-button>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="contenido">
   <ion-card>
     <ion-card-header>
       <ion-card-title>Login</ion-card-title>
@@ -17,10 +11,16 @@
       <ion-item>
         <ion-input [(ngModel)]="clave_1" label="Clave" placeholder="Ingrese su clave" labelPlacement="stacked" type="password"></ion-input>
       </ion-item>
-      <div>
-
-        <ion-button (click)="ingresar()" [disabled]="correo=='' || clave_1==''" color="success" expand="block">Ingresar</ion-button>
+      <div class="buttons">
+        <ion-button class="btn" (click)="ingresar()" [disabled]="correo=='' || clave_1==''" 
+        shape="round" fill="solid" color="success">Ingresar</ion-button>
+        <ion-button class="btn" slot="end" shape="round" fill="outline" 
+        color="primary" [routerLink]="['/register']" width="200">Registrarse</ion-button>
+      </div>
+      <div class="ion-text-center">
+        <a [routerLink]="['/restablecer']">¿Has olvidado tu?</a>
       </div>
     </ion-card-content>
   </ion-card>
+</div>
 </ion-content>

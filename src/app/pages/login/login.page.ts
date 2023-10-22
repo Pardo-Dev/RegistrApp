@@ -44,9 +44,9 @@ export class LoginPage implements OnInit {
   fecha:Date = new Date();
 
   async ngOnInit() {
-    await this.usuarioStorage.agregar(this.admin, 'usuarios');
-    await this.usuarioStorage.agregar(this.docente, 'usuarios');
-    alert(this.fecha.toLocaleDateString())
+    //await this.usuarioStorage.agregar(this.admin, 'usuarios');
+    //await this.usuarioStorage.agregar(this.docente, 'usuarios');
+    //alert(this.fecha.toLocaleDateString())
   }
 
 
