@@ -1,14 +1,8 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-back-button slot="start"></ion-back-button>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="contenido">
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Create your account</ion-card-title>
+      <ion-card-title>Crear una cuenta</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <form [formGroup]="usuario" (ngSubmit)="iqualPassword()">
@@ -47,4 +41,5 @@
 
     </ion-card-content>
   </ion-card>
+  </div>
 </ion-content>
