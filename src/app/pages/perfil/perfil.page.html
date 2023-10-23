@@ -1,10 +1,17 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>perfil</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <h1>Bienvenido {{usuario.nombre}}</h1>
-  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Tu panel</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Bienvenido {{usuario.tipo_usuario}} :D</p>
+      
+      <p>Nombre Completo: {{usuario.nombre}} {{usuario.ap_paterno}} {{usuario.ap_materno}}</p>
+
+      <p>Fecha de nacimiento: {{usuario.fecha_nacimiento}}</p>
+      
+      <p>Correo: {{usuario.correo}}</p>
+
+    </ion-card-content>
+  </ion-card>
 </ion-content>

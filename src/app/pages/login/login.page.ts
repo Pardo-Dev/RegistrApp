@@ -14,23 +14,35 @@ export class LoginPage implements OnInit {
 
   admin: any = {
     rut: '21336770-6',
-    nombre: 'Lucas',
-    ap_paterno : 'Antil',
-    ap_materno : 'Gaete',
-    correo: 'lu.antil@duocuc.cl',
+    nombre: 'Carlos',
+    ap_paterno : 'Pardo',
+    ap_materno : 'Belmar',
+    correo: 'administrador@duoc.cl',
     fecha_nacimiento: '2003-12-03',
     tipo_usuario: 'administrador',
-    clave_1: 'CharizardX',
-    clave_2: 'CharizardX'
+    clave_1: 'Administrador123',
+    clave_2: 'Administrador123'
   }
 
   docente: any = {
-    rut: '12123123-5',
-    nombre: 'matias',
+    rut: '13396463-0',
+    nombre: 'Matias',
+    ap_paterno : 'Rubilar',
+    ap_materno : 'Pinto',
+    correo: 'docente@duoc.profesor.cl',
+    fecha_nacimiento: '2001-05-22',
+    tipo_usuario: 'docente',
+    clave_1: 'Docente123',
+    clave_2: 'Docente123'
+  }
+
+  alumno: any = {
+    rut: '15538503-0',
+    nombre: 'Lucas',
     ap_paterno : 'Antil',
     ap_materno : 'Gaete',
-    correo: 'matias@duocuc.cl',
-    fecha_nacimiento: '2003-12-03',
+    correo: 'alumno@duocuc.cl',
+    fecha_nacimiento: '2003-11-04',
     tipo_usuario: 'docente',
     clave_1: 'CharizardX',
     clave_2: 'CharizardX'
@@ -44,8 +56,9 @@ export class LoginPage implements OnInit {
   fecha:Date = new Date();
 
   async ngOnInit() {
-    //await this.usuarioStorage.agregar(this.admin, 'usuarios');
-    //await this.usuarioStorage.agregar(this.docente, 'usuarios');
+    await this.usuarioStorage.agregar(this.admin, 'usuarios');
+    await this.usuarioStorage.agregar(this.docente, 'usuarios');
+    await this.usuarioStorage.agregar(this.alumno, 'usuarios');
     //alert(this.fecha.toLocaleDateString())
   }
 
