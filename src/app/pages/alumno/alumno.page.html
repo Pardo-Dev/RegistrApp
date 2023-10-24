@@ -1,13 +1,5 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>alumno</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">alumno</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <img src="../../../assets/img/Escanner.png">
+  <ion-input [(ngModel)]="codigoClase" label="Codigo Asistencia" placeholder="Ingrese el codigo de la pizarra" labelPlacement="floating" ></ion-input>
+  <ion-button type="submit" (click)="agregarAlumno()"></ion-button>
 </ion-content>

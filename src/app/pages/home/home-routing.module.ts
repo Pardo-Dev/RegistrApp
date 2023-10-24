@@ -24,12 +24,12 @@ const routes: Routes = [
         loadChildren: () => import('../qr-code/qr-code.module').then( m => m.QrCodePageModule)
       },
       {
-        path: 'perfil',
-        loadChildren: () => import('../perfil/perfil.module').then( m => m.PerfilPageModule)
-      },
-      {
         path: 'clases',
         loadChildren: () => import('../clases/clases.module').then( m => m.ClasesPageModule)
+      },
+      {
+        path: 'poke-info',
+        loadChildren: () => import('../poke-info/poke-info.module').then( m => m.PokeInfoPageModule)
       },
     ]
   }

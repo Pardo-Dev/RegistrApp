@@ -93,7 +93,6 @@ export class ClasesPage implements OnInit {
     var claseEncontrada = await this.clasesStorage.buscar(codigo_clase, this.KEY)
     claseEncontrada.codigo_qr = this.generarCodigoUnico(8);
     this.router.navigate(['/home/qr-code',claseEncontrada.codigo_clase]);
-    
   }
 
   async buscar(buscarClase: string){

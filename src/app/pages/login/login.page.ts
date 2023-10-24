@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
     ap_materno : 'Gaete',
     correo: 'alumno@duocuc.cl',
     fecha_nacimiento: '2003-11-04',
-    tipo_usuario: 'docente',
+    tipo_usuario: 'alumno',
     clave_1: 'Alumno123',
     clave_2: 'Alumno123'
   }
@@ -75,7 +75,7 @@ export class LoginPage implements OnInit {
       if(usuario_encontrado.tipo_usuario == "administrador"){
         this.router.navigate(['/home/crud-usuario'], navigationExtras);
       } else if(usuario_encontrado.tipo_usuario == "docente"){
-        this.router.navigate(['/home/docente'], navigationExtras);
+        this.router.navigate(['/home/clases'], navigationExtras);
       } else if(usuario_encontrado.tipo_usuario == "alumno"){
         this.router.navigate(['/home/alumno'], navigationExtras);
       }

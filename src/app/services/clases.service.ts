@@ -17,6 +17,12 @@ export class ClasesService {
     this.clases = await this.storage.get(key) || [];
     return this.clases.find(clases => clases.codigo_clase == codigo_clase);
   }
+  
+
+  async buscarCodigo(codigo_qr: string, key: string): Promise<any>{
+    this.clases = await this.storage.get(key) || [];
+    return this.clases.find(clases => clases.codigo_qr == codigo_qr);
+  }
 
   async agregar(clase: any, key: string): Promise<boolean>{
     this.clases = await this.storage.get(key) || [];

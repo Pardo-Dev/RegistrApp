@@ -1,0 +1,27 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>API POKEMON</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-input label="N° Pokemon" [(ngModel)]="nro_pokemon"></ion-input>
+      </ion-item>
+      <div>
+        <ion-button type="submit" (click)="getPokemonDetails()">Buscar</ion-button>
+      </div>
+      <div>
+        <ion-list>
+          <ion-item>
+            <ion-label>{{datosPokemon.nombre|uppercase}}</ion-label>
+            <img src={{datosPokemon.imagen}} alt="">
+          </ion-item>
+        </ion-list>
+
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  
+  
+</ion-content>
