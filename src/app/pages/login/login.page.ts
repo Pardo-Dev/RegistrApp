@@ -44,10 +44,9 @@ export class LoginPage implements OnInit {
     correo: 'alumno@duocuc.cl',
     fecha_nacimiento: '2003-11-04',
     tipo_usuario: 'docente',
-    clave_1: 'CharizardX',
-    clave_2: 'CharizardX'
+    clave_1: 'Alumno123',
+    clave_2: 'Alumno123'
   }
-  
 
   constructor(private usuarioStorage : UsuarioStorageService,
               private router : Router) { }
@@ -74,11 +73,11 @@ export class LoginPage implements OnInit {
         }
       };
       if(usuario_encontrado.tipo_usuario == "administrador"){
-        this.router.navigate(['/home/perfil'], navigationExtras);
+        this.router.navigate(['/home/crud-usuario'], navigationExtras);
       } else if(usuario_encontrado.tipo_usuario == "docente"){
-        this.router.navigate(['/home/perfil'], navigationExtras);
+        this.router.navigate(['/home/docente'], navigationExtras);
       } else if(usuario_encontrado.tipo_usuario == "alumno"){
-        this.router.navigate(['/home/perfil'], navigationExtras);
+        this.router.navigate(['/home/alumno'], navigationExtras);
       }
 
     }else{

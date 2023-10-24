@@ -20,20 +20,16 @@ const routes: Routes = [
         loadChildren: () => import('../alumno/alumno.module').then( m => m.AlumnoPageModule)
       },
       {
-        path: 'docente',
-        loadChildren: () => import('../docente/docente.module').then( m => m.DocentePageModule)
-      },
-      {
-        path: 'qr-code',
+        path: 'qr-code/:id',
         loadChildren: () => import('../qr-code/qr-code.module').then( m => m.QrCodePageModule)
-      },
-      {
-        path: 'asistencia',
-        loadChildren: () => import('../asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
       },
       {
         path: 'perfil',
         loadChildren: () => import('../perfil/perfil.module').then( m => m.PerfilPageModule)
+      },
+      {
+        path: 'clases',
+        loadChildren: () => import('../clases/clases.module').then( m => m.ClasesPageModule)
       },
     ]
   }

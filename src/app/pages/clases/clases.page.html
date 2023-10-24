@@ -1,0 +1,15 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Clases</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngFor="let class of clases">
+        <ion-item>
+          <ion-label>{{class.codigo_asignatura}}</ion-label>
+          <ion-button slot="end" color="primary" (click)="generarCodigo(class.codigo_clase)">Generar QR</ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -15,6 +15,8 @@ ion-card-title{
 }
 
 ion-card{
+    width: 85%;
+    margin-top: 10%;
     border-radius: 25px 25px 25px 25px;
     --background: white;
     color: black;
@@ -23,4 +25,12 @@ ion-card{
 ion-item{
     color: black;
     --background: white;
+}
+
+.botones{
+    margin-top: 7%;
+}
+
+ion-button{
+    margin: 5%;
 }

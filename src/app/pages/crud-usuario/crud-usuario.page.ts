@@ -35,10 +35,10 @@ export class CrudUsuarioPage implements OnInit {
 
       correo  : new FormControl('', [
                                     Validators.required,
-                                    Validators.pattern('[a-zA-Z.]+@+(duocuc.cl)')
+                                    Validators.pattern('[a-zA-Z.]+@+(duocuc.cl||profesor.duoc.cl||duoc.cl)')
                                   ]),
       
-      tipo_usuario : new FormControl('alumno', [Validators.required]),
+      tipo_usuario : new FormControl('', [Validators.required]),
 
       clave_1 : new FormControl('', [
                                     Validators.required,
@@ -100,5 +100,7 @@ export class CrudUsuarioPage implements OnInit {
       alert("USUARIO NO EXISTE!");
     }
   }
+
+  
 
 }

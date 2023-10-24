@@ -13,11 +13,19 @@
         <ion-icon name="book"></ion-icon>
       </ion-tab-button>
 
+      <ion-tab-button tab="clases">
+        <ion-icon name="book"></ion-icon>
+      </ion-tab-button>
+
       <ion-tab-button tab="docente" *ngIf="usuario.tipo_usuario=='docente'">
         <ion-icon name="book"></ion-icon>
       </ion-tab-button>
 
       <ion-tab-button tab="alumno" *ngIf="usuario.tipo_usuario=='alumno'">
+        <ion-icon name="book"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="qr-code" *ngIf="usuario.tipo_usuario=='alumno'">
         <ion-icon name="book"></ion-icon>
       </ion-tab-button>
     </ion-tab-bar>

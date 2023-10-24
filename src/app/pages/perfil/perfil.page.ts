@@ -10,10 +10,8 @@ export class PerfilPage implements OnInit {
 
   constructor(private router : Router) { }
 
-  usuario : any;
+
 
   ngOnInit() {
-    this.usuario = this.router.getCurrentNavigation()?.extras.state;
-    this.usuario = this.usuario.user;
   }
 }
