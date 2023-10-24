@@ -25,13 +25,13 @@
                     type="text"
                     placeholder="Ingrese un nombre para la asignatura"></ion-input>
       </ion-item>
+
       <ion-item>
-        <ion-input  formControlName="rut_docente"
-                    label="rut docente"
-                    labelPlacement="stacked"
-                    type="text"
-                    placeholder="Ingrese el rut de un docente para la asignatura"></ion-input>
+        <ion-select formControlName="rut_docente" label="Docente" placeholder="Seleccione docente">
+          <ion-select-option *ngFor="let docente of docentes" [value]="docente.rut">{{docente.nombre}} {{docente.ap_paterno}}</ion-select-option>
+        </ion-select>
       </ion-item>
+      
       <div>
         <ion-button type="submit" expand="block" color="success" [disabled]="asignatura.invalid">Guardar</ion-button>
         <ion-button expand="block" color="warning" (click)="modificar()" [disabled]="asignatura.invalid">Modificar</ion-button>
@@ -51,7 +51,7 @@
           <ion-button color="warning" slot="start" (click)="buscar(asign.codigo)">
             <ion-icon slot="icon-only" name="search"></ion-icon>
           </ion-button>
-          <ion-label>{{asign.nombre | titlecase}} - {{asign.correo | uppercase}}</ion-label>
+          <ion-label>{{asign.nombre | titlecase}} - {{asign.rut_docente | uppercase}}</ion-label>
           <ion-button color="danger" slot="end" (click)="eliminar(asign.rut)">
             <ion-icon slot="icon-only" name="trash"></ion-icon>
           </ion-button>

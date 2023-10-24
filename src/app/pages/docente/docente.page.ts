@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AsignaturaService } from 'src/app/services/asignatura.service';
 import { AsistenciaStorageService } from 'src/app/services/asistencia-storage.service';
+import { UsuarioStorageService } from 'src/app/services/usuario-storage.service';
 
 @Component({
   selector: 'app-docente',
@@ -13,7 +14,8 @@ export class DocentePage implements OnInit {
   asignaturas: any[] = [];
 
   constructor(private asignaturaService : AsignaturaService,
-              private asistenciaStorage : AsistenciaStorageService) { }
+              private asistenciaStorage : AsistenciaStorageService,
+              private usuarioStorage : UsuarioStorageService) { }
 
   async ngOnInit() {
     await this.listar();
@@ -21,6 +23,9 @@ export class DocentePage implements OnInit {
 
 
   async listar(){
-    this.asignaturas = await this.asignaturaService.listar(this.KEY);
+    const rutDocenteActual = this.usuarioStorage.getRutDocenteActual();
+    if(rutDocenteActual){
+      this.asignaturas = (await this.asignaturaService.listar(this.KEY)).filter(asignatura => asignatura.rut_docente === rutDocenteActual);
+    }
   }
 }

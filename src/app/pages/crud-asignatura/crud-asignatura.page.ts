@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { AsignaturaService } from 'src/app/services/asignatura.service';
+import { UsuarioStorageService } from 'src/app/services/usuario-storage.service';
 
 @Component({
   selector: 'app-crud-asignatura',
@@ -14,13 +15,17 @@ export class CrudAsignaturaPage implements OnInit {
   codigo : string = "";
   nombre : string = "";
   rut_docente : string = "";
-  KEY : string = "asignaturas"
+  KEY : string = "asignaturas";
+  usus : string = 'usuarios';
 
   constructor(private asignaturaService : AsignaturaService,
-              private toastController : ToastController) { }
+              private toastController : ToastController,
+              private usuarioStorage: UsuarioStorageService) { }
 
   async ngOnInit() {
     await this.listar();
+    await this.listarDocentes();
+
   }
   asignatura = new FormGroup({
     codigo : new FormControl('', [Validators.required]),
@@ -29,6 +34,7 @@ export class CrudAsignaturaPage implements OnInit {
   })
 
   asignaturas : any[] = [];
+  docentes: any[] = [];
 
   // Metodos
   async listar(){
@@ -39,6 +45,7 @@ export class CrudAsignaturaPage implements OnInit {
     let resp : boolean = await this.asignaturaService.agregar(this.asignatura.value, this.asignatura.value.codigo||"", this.KEY);
     if(resp){
       this.alerta('bottom', 'ASIGNATURA REGISTRADA!', 3000, 'success');
+      await this.listar();
     } else {
       this.alerta('bottom', 'ASIGNATURA NO REGISTRADA!', 3000, 'danger');
     }
@@ -63,6 +70,12 @@ export class CrudAsignaturaPage implements OnInit {
     }else{
       alert("ASIGNATURA NO EXISTE!");
     }
+  }
+
+  //listarDocentes
+  async listarDocentes(){
+    const usuarios = await this.usuarioStorage.listar(this.usus);
+    this.docentes = usuarios.filter((usuario) => usuario.tipo_usuario === 'docente');
   }
 
 

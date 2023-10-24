@@ -11,10 +11,11 @@ export class UsuarioStorageService {
 
   usuarios: any[] = [];
   estado_login: boolean = false;
+  private rutDocenteActual: string;
 
   constructor(private storage: Storage,
               private router : Router) {
-
+                this.rutDocenteActual = '';
                 storage.create()
                }
 
@@ -82,6 +83,7 @@ export class UsuarioStorageService {
     var usuarito: any = this.usuarios.find(usu => usu.correo == correo && usu.clave_1 == clave);
     if(usuarito != undefined){
       this.estado_login = true;
+      this.rutDocenteActual = usuarito.rut;
       return usuarito;
     }
     return undefined;
@@ -90,6 +92,10 @@ export class UsuarioStorageService {
   logout(){
     this.estado_login = false;
     this.router.navigate(['/login'])
+  }
+
+  getRutDocenteActual(): string {
+    return this.rutDocenteActual;
   }
 
   getEstadoLogin(): boolean{

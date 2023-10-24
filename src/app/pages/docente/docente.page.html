@@ -12,7 +12,7 @@
     <ion-card-content>
       <ion-list *ngFor="let asig of asignaturas">
         <ion-item>
-          <h3>{{asig.nombre}}</h3>
+          <h3>{{asig.nombre}} - {{asig.codigo}}</h3>
           <ion-button slot="end" color="success" [routerLink]="['/home/qr-code']" >Registrar</ion-button>
         </ion-item>
       </ion-list>

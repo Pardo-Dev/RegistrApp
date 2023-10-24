@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
     ap_materno : 'Gaete',
     correo: 'alumno@duocuc.cl',
     fecha_nacimiento: '2003-11-04',
-    tipo_usuario: 'docente',
+    tipo_usuario: 'alumno',
     clave_1: 'CharizardX',
     clave_2: 'CharizardX'
   }
@@ -80,10 +80,11 @@ export class LoginPage implements OnInit {
       } else if(usuario_encontrado.tipo_usuario == "alumno"){
         this.router.navigate(['/home/perfil'], navigationExtras);
       }
-
+      
+      var limpio = document.getElementById("txtCorreo")?.setAttribute("value","");  
+      var limpio2 = document.getElementById("txtClave")?.setAttribute("value","");  
     }else{
       alert("USUARIO O CLAVE NO EXISTE!");
     }
   }
-
 }

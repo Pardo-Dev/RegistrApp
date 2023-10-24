@@ -6,10 +6,10 @@
     </ion-card-header>
     <ion-card-content>
       <ion-item>
-        <ion-input [(ngModel)]="correo" label="Correo" placeholder="Ingrese su correo" labelPlacement="stacked" ></ion-input>
+        <ion-input id="txtCorreo" [(ngModel)]="correo" label="Correo" placeholder="Ingrese su correo" labelPlacement="stacked" ></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input [(ngModel)]="clave_1" label="Clave" placeholder="Ingrese su clave" labelPlacement="stacked" type="password"></ion-input>
+        <ion-input id="txtClave" [(ngModel)]="clave_1" label="Clave" placeholder="Ingrese su clave" labelPlacement="stacked" type="password"></ion-input>
       </ion-item>
       <div class="buttons">
         <ion-button class="btn" (click)="ingresar()" [disabled]="correo=='' || clave_1==''" 
